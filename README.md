@@ -6,10 +6,12 @@ This repository contains my personal collection of Claude agent definitions and 
 
 These agents are specialized tools designed to assist with various development tasks:
 
+- **architect-cleaner**: Architecture analysis and aggressive repository cleanup agent
 - **claude-status**: Dashboard and metrics tracking agent
 - **code-reviewer**: Comprehensive code review agent for Python projects
 - **doc-writer**: Documentation generation and maintenance agent
 - **prompt-engineer**: Transforms vague ideas into precise technical prompts
+- **python-generator**: Modern Python 3.10+ code generation with Context7 integration
 - **test-engineer**: Comprehensive test suite creation agent
 
 ## Structure
