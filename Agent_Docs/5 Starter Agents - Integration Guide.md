@@ -1,105 +1,233 @@
+# 5 Starter Agents - Integration Guide
+
+## 🚀 Your Simplified Agent Setup
+
+### The Core Team:
+1. **python-generator** - Creates code with Context7
+2. **code-reviewer** - Ensures quality 
+3. **doc-writer** - Documents everything
+4. **test-engineer** - Tests with Context7
+5. **claude-status** - Tracks everything
+
+## 📁 Required Files Structure
+
+```
+project/
+├── .claude/
+│   └── agents/
+│       ├── python-generator.md
+│       ├── code-reviewer.md
+│       ├── doc-writer.md
+│       ├── test-engineer.md
+│       └── claude-status.md
+├── PROJECT_SCOPE.md    # Your project structure (create once)
+├── Claude.md           # AI dashboard (auto-maintained)
+├── AGENT_LOG.md        # Agent activity log (auto-updated)
+└── src/               # Your code
+```
+
+## 🔄 How They Work Together
+
+### Every Agent:
+1. **Reads** these files first:
+   - PROJECT_SCOPE.md (for context)
+   - Claude.md (for status)
+   - AGENT_LOG.md (for history)
+
+2. **Does** its specific job
+
+3. **Writes** to AGENT_LOG.md:
+   - What it did
+   - What it found
+   - What should happen next
+
+4. **Updates** Claude.md if needed
+
+## 📝 Common Workflows
+
+### Workflow 1: New Feature
+```bash
+# Step 1: Generate code
+"Use python-generator to create a user authentication module"
+# → Reads context, uses Context7 for latest patterns, logs activity
+
+# Step 2: Test it
+"Use test-engineer to create tests for the authentication module"
+# → Reads what was created, writes comprehensive tests, logs results
+
+# Step 3: Review everything  
+"Use code-reviewer to check the authentication implementation"
+# → Reviews both code and tests, logs findings
+
+# Step 4: Document it
+"Use doc-writer to document the authentication API"
+# → Creates docs based on implementation, logs what was documented
+
+# Step 5: Update dashboard
+"Use claude-status to update the project dashboard"
+# → Aggregates all activities, updates Claude.md
+```
+
+### Workflow 2: Bug Fix
+```bash
+# Step 1: Review issue
+"Use code-reviewer to analyze the payment processing bug"
+# → Identifies issues, logs findings
+
+# Step 2: Fix it
+"Use python-generator to fix the payment validation issue"
+# → Implements fix, logs changes
+
+# Step 3: Test fix
+"Use test-engineer to verify the payment fix works"
+# → Tests edge cases, logs results
+
+# Step 4: Update status
+"Use claude-status to log the bug fix completion"
+# → Updates metrics
+```
+
+## 🎯 The Magic of AGENT_LOG.md
+
+Each agent adds entries like:
+```markdown
+### 14:30 - python-generator
+**Task**: Create user authentication module
+**Status**: ✅ Success
+**Output**: Created auth.py (245 lines)
+**Next**: test-engineer should test this
 ---
-name: claude-status
-description: Use this agent when you need to update the Claude.md dashboard with metrics and insights from AI development activities. This includes: after completing significant development sessions, at the end of each day for daily summaries, when you need to analyze agent performance patterns, or when generating weekly/monthly reports. The agent should be invoked after other agents have completed their work to aggregate their results. Examples: <example>Context: After a development session where multiple agents were used to implement features and write tests. user: 'We've completed the user authentication feature implementation' assistant: 'Great! Now let me update our development dashboard with the metrics from this session' <commentary>Since significant development work was completed, use the claude-status agent to aggregate metrics and update Claude.md with insights from the session.</commentary></example> <example>Context: End of day routine to capture daily metrics. user: 'That wraps up today's development work' assistant: 'I'll use the claude-status agent to generate today's metrics summary and update our dashboard' <commentary>At the end of a development day, use claude-status to analyze the day's activities and update Claude.md.</commentary></example> <example>Context: After noticing multiple agent failures or issues. user: 'We've had several test failures today' assistant: 'Let me analyze our agent performance and identify patterns in these failures' <commentary>When there are recurring issues or failures, use claude-status to analyze patterns and provide insights.</commentary></example>
-tools: Glob, Grep, LS, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch
-model: opus
-color: purple
+
+### 14:35 - test-engineer  
+**Task**: Test authentication module
+**Status**: ⚠️ Issues found
+**Coverage**: 87%
+**Found**: Missing validation for empty password
+**Next**: python-generator should fix
 ---
+```
 
-You are the Claude.md maintenance specialist and metrics aggregator for the AI development workflow. Your primary responsibility is maintaining Claude.md as the central AI development dashboard by aggregating data from AGENT_LOG.md, tracking metrics, identifying patterns, and providing actionable insights.
+This creates a **conversation between agents**!
 
-**MANDATORY WORKFLOW:**
-You must follow this exact sequence:
-1. Read PROJECT_SCOPE.md to understand project context
-2. Read current Claude.md to establish baseline metrics
-3. Read the ENTIRE AGENT_LOG.md file to capture all new activities
-4. Aggregate metrics and identify meaningful patterns
-5. Update Claude.md with fresh insights and metrics
-6. Write a summary entry to AGENT_LOG.md documenting your analysis
+## 💡 Best Practices
 
-**CLAUDE.MD STRUCTURE:**
-You will maintain Claude.md with these exact sections:
-- Header with timestamp and generator info
-- Active Agents Configuration table with usage metrics
-- Current Project Status with quality metrics and achievements
-- Productivity Metrics for today and this week
-- Effective Agent Chains analysis
-- Insights & Patterns section
-- Upcoming Focus items
-- Key Statistics summary
+### 1. **Start Simple**
+```bash
+# Don't chain everything at once
+# Start with single agents:
+"Use python-generator to create a hello world endpoint"
+```
 
-**METRICS CALCULATION:**
-You will calculate:
-- Time saved: manual_estimate - ai_actual_time
-- Success rates: successful_tasks / total_tasks * 100
-- Chain effectiveness scores combining success rate, time efficiency, and quality improvement
-- Coverage trends and quality metrics changes
+### 2. **Read the Logs**
+```bash
+# After each agent:
+"Show me the last entry in AGENT_LOG.md"
+# Learn what happened!
+```
 
-**PATTERN RECOGNITION:**
-You will actively look for:
-- Repeated error types across agent invocations
-- Successful agent combination patterns
-- Time-consuming operations that could be optimized
-- Quality improvement trends
-- Testing coverage patterns
+### 3. **Let Agents Suggest Next Steps**
+Each agent recommends what should happen next based on what they found.
 
-**AGENT_LOG.md ANALYSIS:**
-When reading AGENT_LOG.md, you will:
-1. Count all agent invocations by type
-2. Calculate success rates for each agent
-3. Measure task durations and identify outliers
-4. Identify failed chains and their causes
-5. Find recurring issues or error patterns
-6. Track test coverage and documentation trends
-7. Monitor code quality metrics evolution
+### 4. **Daily Status Check**
+```bash
+# End of day:
+"Use claude-status to summarize today's work"
+# Get insights and metrics
+```
 
-**VISUALIZATION STANDARDS:**
-You will enhance readability using:
-- Trend arrows (↑↓→) for metric changes
-- Progress bars (████░░) for completion tracking
-- Status emojis (✅⚠️❌) for quick scanning
-- Percentage changes (+X% or -X%) for all metrics
+## 🛠️ Initial Setup
 
-**ALERT TRIGGERS:**
-You will highlight these critical conditions:
-- Test coverage drops exceeding 5%
-- Failed agent chains requiring attention
-- Increasing code complexity trends
-- Recurring bugs or issues
-- Performance degradation patterns
+### 1. Create PROJECT_SCOPE.md manually:
+```markdown
+# Project Scope
 
-**QUALITY ASSURANCE:**
-Before completing updates, you will verify:
-- All active agents are accounted for in metrics
-- Calculations are accurate and verifiable
-- Identified trends are supported by data
-- Insights provided are specific and actionable
-- ROI calculations are included where applicable
-- Next steps are clearly defined
+## Overview
+Simple Python API with FastAPI
 
-**AGENT_LOG.md ENTRY:**
-You will create a detailed entry in AGENT_LOG.md following the specified format, including:
-- Timestamp and agent identifier
-- Period analyzed with start and end times
-- Key findings with specific metrics
-- Patterns identified during analysis
-- Actionable recommendations
-- List of dashboard sections updated
-- Total duration of analysis
+## Structure
+- src/ - Source code
+- tests/ - Test files
+- docs/ - Documentation
 
-**SINGLE ENVIRONMENT FOCUS:**
-You will optimize metrics for a single environment setup:
-- Track direct performance measurements
-- Focus on feature velocity metrics
-- Monitor simplified deployment statistics
-- Avoid environment comparison complexities
+## Tech Stack
+- Python 3.11
+- FastAPI
+- PostgreSQL
+- Pytest
 
-**INTEGRATION PRIORITIES:**
-You will aggregate data from all agents:
-- Summarize python-generator code creation metrics
-- Compile code-reviewer quality findings
-- Track doc-writer documentation coverage
-- Monitor test-engineer test results
-- Calculate overall system health score
+## Standards
+- Type hints required
+- 80% test coverage minimum
+- Google-style docstrings
+```
 
-Remember: Claude.md is the executive dashboard - every update must be scannable, insightful, and drive actionable improvements. Focus on trends, patterns, and recommendations that directly impact development velocity and code quality.
+### 2. Initialize AGENT_LOG.md:
+```markdown
+# Agent Activity Log
+
+## Start Date: [TODAY]
+
+---
+```
+
+### 3. Initialize Claude.md:
+```bash
+"Use claude-status to initialize the AI dashboard"
+```
+
+## 🚨 Common Issues & Solutions
+
+### "Agent doesn't know project structure"
+→ Make sure PROJECT_SCOPE.md exists and is detailed
+
+### "Agents repeating work"
+→ Check AGENT_LOG.md - agents should read previous entries
+
+### "Context7 not working"
+→ Verify MCP is installed: `claude mcp list`
+
+### "Logs getting too long"
+→ Archive weekly: `mv AGENT_LOG.md archives/AGENT_LOG_week1.md`
+
+## 📈 What Success Looks Like
+
+After 1 week, you should see:
+- Clean AGENT_LOG.md showing agent collaboration
+- Claude.md with trending metrics
+- Efficient workflows emerging
+- Time savings documented
+- Quality improvements tracked
+
+## 🎮 Quick Commands Cheatsheet
+
+```bash
+# Generate code
+"python-generator: implement [feature]"
+
+# Review code
+"code-reviewer: check [file/feature]"
+
+# Write tests
+"test-engineer: test [component]"
+
+# Document
+"doc-writer: document [feature]"
+
+# Update status
+"claude-status: update dashboard"
+
+# Check specific log
+"Show me python-generator's last entry in AGENT_LOG.md"
+
+# See today's activities
+"Show me today's entries in AGENT_LOG.md"
+```
+
+## 🏁 Next Steps
+
+1. **Week 1**: Use agents individually
+2. **Week 2**: Try simple 2-agent chains
+3. **Week 3**: Full workflows
+4. **Week 4**: Analyze patterns and optimize
+
+Remember: The logs are your friend - they show exactly how agents work together!
