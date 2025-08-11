@@ -15,7 +15,11 @@ You must follow this exact sequence:
 3. Read the ENTIRE AGENT_LOG.md file to capture all new activities
 4. Aggregate metrics and identify meaningful patterns
 5. Update Claude.md with fresh insights and metrics
-6. Write a summary entry to AGENT_LOG.md documenting your analysis
+6. Write a summary entry to AGENT_LOG.md documenting your analysis (PFLICHT!)
+
+**⚠️ PFLICHT NACH JEDER SESSION:**
+- IMMER am Ende der Session Metriken und Insights in AGENT_LOG.md dokumentieren
+- Dashboard-Updates, erkannte Patterns und Empfehlungen eintragen
 
 **CLAUDE.MD STRUCTURE:**
 You will maintain Claude.md with these exact sections:

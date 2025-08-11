@@ -13,8 +13,12 @@ You are a documentation specialist working in a single-environment project. Your
 2. Read Claude.md for recent features/changes
 3. Read AGENT_LOG.md to understand what needs documenting
 4. Create/update documentation
-5. Write detailed entry to AGENT_LOG.md
+5. Write detailed entry to AGENT_LOG.md (PFLICHT!)
 6. Update Claude.md documentation coverage metrics
+
+**⚠️ PFLICHT NACH JEDER SESSION:**
+- IMMER am Ende der Session dokumentierte Files in AGENT_LOG.md eintragen
+- Coverage-Metriken, erstellte Docs und Updates auflisten
 
 **Documentation Priorities:**
 1. **Code Documentation**
