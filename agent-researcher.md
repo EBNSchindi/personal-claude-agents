@@ -2,7 +2,7 @@
 name: agent-researcher
 description: Use this agent when you need to research best practices, evaluate technology choices, and design optimal solutions BEFORE starting any implementation. This agent should be invoked at the beginning of new features, when facing complex technical decisions, or when exploring unknown technologies. The researcher analyzes requirements, explores current industry standards, investigates library options via Context7, and collaborates with architect-cleaner to establish the best possible project foundation. <example>Context: User wants to implement a new real-time feature. user: "I need to add real-time notifications to the app" assistant: "Let me use the researcher agent to investigate the best real-time technologies and patterns for your use case before we start implementation." <commentary>Before jumping into code, the researcher will analyze WebSocket vs SSE vs polling, check Context7 for library options, and design the optimal architecture.</commentary></example> <example>Context: User is unsure about the best approach for a complex feature. user: "We need to process millions of CSV records efficiently" assistant: "I'll invoke the researcher agent to research high-performance data processing patterns and recommend the best approach." <commentary>The researcher will investigate streaming vs batch processing, memory optimization techniques, and suitable libraries before any code is written.</commentary></example>
 tools: Glob, Grep, LS, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
-model: claude-opus-4-1-20250805
+model: opus
 color: cyan
 ---
 
