@@ -8,14 +8,14 @@ This is a personal collection of Claude agent definitions. Each `.md` file in th
 
 ## Available Agents
 
-- **architect-cleaner**: Architecture analysis and aggressive repository cleanup
-- **claude-status**: Dashboard and metrics tracking 
-- **code-reviewer**: Comprehensive Python code review
-- **doc-writer**: Documentation generation and maintenance
-- **prompt-engineer**: Transforms vague ideas into precise technical prompts
-- **python-generator**: Modern Python 3.10+ code generation
-- **test-engineer**: Comprehensive test suite creation
-- **researcher**: Research best practices and design optimal solutions
+- **agent-architect-cleaner**: Architecture analysis and aggressive repository cleanup
+- **agent-claude-status**: Dashboard and metrics tracking 
+- **agent-code-reviewer**: Comprehensive Python code review
+- **agent-doc-writer**: Documentation generation and maintenance
+- **agent-prompt-engineer**: Transforms vague ideas into precise technical prompts
+- **agent-python-generator**: Modern Python 3.10+ code generation
+- **agent-test-engineer**: Comprehensive test suite creation
+- **agent-researcher**: Research best practices and design optimal solutions
 
 ## Critical Documentation Rules
 
@@ -49,9 +49,9 @@ docs/
    - This is MANDATORY (PFLICHT!) - no exceptions
 
 3. **Specific agent responsibilities:**
-   - **architect-cleaner**: Creates missing meta-files, maintains PROJECT_SCOPE.md
-   - **prompt-engineer**: Creates missing files, documents generated prompts
-   - **researcher**: Creates missing files, saves research to `research/` directory
+   - **agent-architect-cleaner**: Creates missing meta-files, maintains PROJECT_SCOPE.md
+   - **agent-prompt-engineer**: Creates missing files, documents generated prompts
+   - **agent-researcher**: Creates missing files, saves research to `research/` directory
    - **All other agents**: Must update AGENT_LOG.md after each session
 
 ## Development Workflow
@@ -69,7 +69,7 @@ docs/
 3. **Agent Communication:**
    - All agents write to AGENT_LOG.md for inter-agent communication
    - Agents read AGENT_LOG.md to understand previous work
-   - architect-cleaner maintains PROJECT_SCOPE.md and ERROR_LOG.md
+   - agent-architect-cleaner maintains PROJECT_SCOPE.md and ERROR_LOG.md
 
 ## Common Commands
 
@@ -91,7 +91,7 @@ git commit -m "Update agent: <description>"
 ## Important Conventions
 
 - **AGENT_LOG.md Maintenance**: PFLICHT! Every agent must write detailed session reports
-- **File Creation**: architect-cleaner, prompt-engineer, and researcher must create missing essential files
+- **File Creation**: agent-architect-cleaner, agent-prompt-engineer, and agent-researcher must create missing essential files
 - **Session Documentation**: All agents must document their work in AGENT_LOG.md without exception
 
 - **German Documentation**: Agent_Docs/DEVELOPMENT_GUIDE.md contains German text with development guidelines
